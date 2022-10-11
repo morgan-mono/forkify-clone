@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-family: Nunito Sans,sans-serif;;
+  font-size: 62.5%;
   line-height: 24px;
   font-weight: 400;
 
@@ -38,11 +38,11 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  /* margin: 0;
   display: flex;
 
-  place-items: center;
-  background-image: linear-gradient(to right bottom,#fbdb89,#f48982);
+  place-items: center; */
+  /* background-image: linear-gradient(to right bottom,#fbdb89,#f48982); */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -52,7 +52,7 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -69,32 +69,19 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
-.card {
+/* .card {
   padding: 2em;
-}
+} */
 
 #app {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
   /* padding: 2rem; */
   display: flex;
   align-items: center;
   flex-direction: column;
   text-align: center;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
