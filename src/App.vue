@@ -2,15 +2,22 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from "./components/HelloWorld.vue";
+import {provide} from 'vue';
 import Header from "./components/organisms/Header.vue";
 import RecipeList from "./components/organisms/RecipeList.vue";
+import {useRecipes} from './stores/store.js'
+
+const state = useRecipes();
+
+provide('state', state);
+
 </script>
 
 <template>
   <div class="my-container xl:my-16 xl:rounded-2xl overflow-hidden w-full xl:w-11/12 bg-orange-50">
     <Header />
     <main class="flex w-full">
-      <RecipeList class="recipes w-1/3 bg-red-600" />
+      <RecipeList />
       <div class="recipe-body w-2/3 bg-ivory">body</div>
     </main>
   </div>

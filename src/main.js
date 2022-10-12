@@ -28,4 +28,9 @@ library.add(
   faCircleMinus,
   faCirclePlus
 );
-createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");
+
+
+
+createApp(App)
+.component("font-awesome-icon", FontAwesomeIcon)
+.mount("#app");
