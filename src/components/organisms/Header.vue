@@ -19,18 +19,6 @@ import NavButton from "../molecules/NavButton.vue";
         <div class="nav mx-10 flex h-full">
             <NavButton icon="fa-regular fa-pen-to-square" label="add recipe" />
             <NavButton icon="fa-regular fa-bookmark" label="bookmarks" />
-            <!-- <div class="nav__button flex px-6 h-full items-center cursor-pointer">
-                <div class="nav__icon">
-                    <font-awesome-icon icon="fa-regular fa-pen-to-square" class="text-4xl mr-3 text-accent" />
-                </div>
-                <span class="nav__label uppercase text-2xl font-bold">ADD RECIPE</span>
-            </div>
-            <div class="nav__button flex">
-                <div class="icon">
-                    <font-awesome-icon icon="fa-regular fa-bookmark" class="text-4xl" />
-                </div>
-                <div class="label">BOOKMARKS</div>
-            </div> -->
         </div>
     </header>
 </template>
