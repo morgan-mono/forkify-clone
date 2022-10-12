@@ -17,6 +17,13 @@ module.exports = {
         'gradient2': '#f48982'
       },
     },
+    transitionTimingFunction: {
+      DEFAULT: 'cubic-bezier(0.25, 0.1, 0.25, 1.0)', // restored default timing function
+      linear: 'linear',
+      in: 'cubic-bezier(0.4, 0, 1, 1)',
+      out: 'cubic-bezier(0, 0, 0.2, 1)',
+      'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',
+    },
   },
   plugins: [],
 }
