@@ -5,20 +5,21 @@ import HelloWorld from "./components/HelloWorld.vue";
 import {provide} from 'vue';
 import Header from "./components/organisms/Header.vue";
 import RecipeList from "./components/organisms/RecipeList.vue";
+import Recipe from "./components/organisms/Recipe.vue";
 import {useRecipes} from './stores/store.js'
 
 const state = useRecipes();
 
-provide('state', state);
+// provide('state', state);
 
 </script>
 
 <template>
   <div class="my-container xl:my-16 xl:rounded-2xl overflow-hidden w-full xl:w-11/12 bg-orange-50">
     <Header />
-    <main class="flex w-full">
+    <main class="flex w-full text-textdark">
       <RecipeList />
-      <div class="recipe-body w-2/3 bg-ivory">body</div>
+      <Recipe />
     </main>
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
