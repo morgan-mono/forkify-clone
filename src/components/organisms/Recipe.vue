@@ -15,7 +15,7 @@ const computedDosage = computed(() => {
     return store.recipe.ingredients.map((ingredient) => {
         let newDosage = { ...ingredient }
         if (newDosage.quantity) {
-            newDosage.quantity = newDosage.quantity / store.recipe.servings * selectedServings.value;
+            newDosage.quantity = +(newDosage.quantity / store.recipe.servings * selectedServings.value).toFixed(2);
         }
         return newDosage
     })
@@ -73,10 +73,19 @@ function increase() {
                 <font-awesome-icon @click="increase" icon="fa-regular fa-bookmark" class="h-10 w-10" />
             </button>
         </div>
-        <div class="recipe__ingredients py-20 px-32">
+        <div class="recipe__ingredients py-20 px-32 text-[1.6rem]">
             <h2 class="text-accent uppercase text-center text-4xl font-bold mb-10">Recipe Ingredients</h2>
-            <ul class="recipe__ingredient-list grid grid-cols-2">
-                <li class="recipe__ingredient" v-for="(ingredient) in computedDosage">{{ingredient}}</li>
+            <ul class="recipe__ingredient-list grid grid-cols-2 gap-y-10 gap-x-12">
+                <li class="recipe__ingredient flex" v-for="(ingredient) in computedDosage">
+                    <font-awesome-icon icon="fa-solid fa-check" class="recipe__icon h-8 w-8 text-accent mr-4" />
+                    <div class="recipe__quantity grow-0 shrink-0 basis-auto mr-2">
+                        {{ingredient.quantity}}
+                    </div>
+                    <div class="recipe__description">
+                        {{ingredient.unit ? `${ingredient.unit} ${ingredient.description}` : ingredient.description}}
+                    </div>
+                    <!-- {{ingredient}} -->
+                </li>
             </ul>
         </div>
         <div class="recipe__directions"></div>
