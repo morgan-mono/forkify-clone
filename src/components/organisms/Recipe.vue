@@ -21,8 +21,6 @@ const computedDosage = computed(() => {
         }
         return newDosage
     })
-
-
 }
 )
 
@@ -99,5 +97,10 @@ function increase() {
             <RoundedButton iconRight="fa-solid fa-arrow-right" content="Directions" :url="store.recipe.source_url" />
         </div>
     </div>
-    <div v-else> WOOPS</div>
+    <div v-else class="recipe w-2/3 bg-ivory">
+        <div class="norecipe max-w-2xl mx-auto flex px-16 py-20">
+            <font-awesome-icon icon="fa-regular fa-smile" class="recipe__icon h-12 w-12 text-accent mr-4" />
+            <p class="text-3xl font-bold leading-relaxed">Start by searching for a recipe or an ingredient. Have fun!</p>
+        </div>
+    </div>
 </template>

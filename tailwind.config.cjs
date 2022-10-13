@@ -16,6 +16,9 @@ module.exports = {
         'gradient1': '#fbdb89',
         'gradient2': '#f48982'
       },
+      animation: {
+        'spin-fast': 'spin .5s linear infinite',
+      }
     },
     transitionTimingFunction: {
       DEFAULT: 'cubic-bezier(0.25, 0.1, 0.25, 1.0)', // restored default timing function

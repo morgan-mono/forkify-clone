@@ -15,9 +15,9 @@ const state = useRecipes();
 </script>
 
 <template>
-  <div class="my-container xl:my-16 xl:rounded-2xl overflow-hidden w-full xl:w-11/12 bg-orange-50">
+  <div class="my-container xl:my-16 xl:rounded-2xl overflow-hidden w-full xl:w-11/12 flex flex-col bg-orange-50">
     <Header />
-    <main class="flex w-full text-textdark">
+    <main class="flex w-full grow text-textdark">
       <RecipeList />
       <Recipe />
     </main>

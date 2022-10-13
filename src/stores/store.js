@@ -5,12 +5,14 @@ const store = reactive({
   searchTerm: "",
   recipeID: "",
   recipes: [],
+  results: null,
   recipe: {},
   loadingRecipes: false,
   loadingRecipe: false,
 });
 
 function fetchRecipes() {
+  store.loadingRecipes = true;
   store.recipes = [];
   // recipes.value = 'searched bread';
   axios
@@ -24,7 +26,9 @@ function fetchRecipes() {
       console.log(resp);
       if (resp.status == 200) {
         store.recipes = resp.data.data.recipes;
+        store.results = resp.data.results;
       }
+      store.loadingRecipes = false;
     })
     .catch(function (error) {
       // handle error
@@ -33,38 +37,38 @@ function fetchRecipes() {
 }
 
 function fetchRecipe(id) {
-    store.recipe = {};
-    // recipes.value = 'searched bread';
-    axios
-      .get(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`, {
-        params: {
-          key: key,
-        },
-      })
-      .then((resp) => {
-        console.log(resp);
-        if (resp.status == 200) {
-          store.recipe = resp.data.data.recipe;
-        }
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error.response);
-      });
-  }
+  store.recipe = {};
+  // recipes.value = 'searched bread';
+  axios
+    .get(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`, {
+      params: {
+        key: key,
+      },
+    })
+    .then((resp) => {
+      console.log(resp);
+      if (resp.status == 200) {
+        store.recipe = resp.data.data.recipe;
+      }
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error.response);
+    });
+}
 
 function fetchRecipeAPI(url, paramArgs) {
-    console.log(paramArgs);
+  console.log(paramArgs);
   const params = {
     key: key,
   };
   for (const key in paramArgs) {
     params[key] = paramArgs[key];
   }
-  console.log('populated params: ', params);
+  console.log("populated params: ", params);
 
   axios
-    .get(url, {params: params})
+    .get(url, { params: params })
     .then((resp) => {
       console.log(resp);
       if (resp.status == 200) {
@@ -91,15 +95,15 @@ watch(
 
 // WATCH FOR SINGLE RECIPE GET
 watch(
-    () => store.recipeID,
-    (recipeID, prevRecipeID) => {
-      console.log(recipeID, prevRecipeID);
-      if (recipeID !== prevRecipeID) {
-        console.log(`Fetching recipe ID ${recipeID}`);
-        fetchRecipe(recipeID);
-      }
+  () => store.recipeID,
+  (recipeID, prevRecipeID) => {
+    console.log(recipeID, prevRecipeID);
+    if (recipeID !== prevRecipeID) {
+      console.log(`Fetching recipe ID ${recipeID}`);
+      fetchRecipe(recipeID);
     }
-  );
+  }
+);
 
 export function useRecipes() {
   const updateSearchTerm = (value) => {

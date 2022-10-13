@@ -7,6 +7,7 @@ import {
   faPenToSquare,
   faBookmark,
   faClock,
+  faSmile
 } from "@fortawesome/free-regular-svg-icons";
 import {
   faMagnifyingGlass,
@@ -15,7 +16,9 @@ import {
   faArrowLeft,
   faCirclePlus,
   faCircleMinus,
-  faCheck
+  faCheck,
+  faCircleNotch,
+  faTriangleExclamation
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -28,7 +31,10 @@ library.add(
   faArrowRight,
   faCircleMinus,
   faCirclePlus,
-  faCheck
+  faCheck,
+  faSmile,
+  faCircleNotch,
+  faTriangleExclamation
 );
 
 
