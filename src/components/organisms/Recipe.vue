@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed, reactive } from 'vue'
 import { useRecipes } from '../../stores/store.js'
+import RoundedButton from '../atoms/RoundedButton.vue'
+import Heading2 from '../atoms/Heading2.vue'
 
 const { store } = useRecipes();
 
@@ -73,8 +75,9 @@ function increase() {
                 <font-awesome-icon @click="increase" icon="fa-regular fa-bookmark" class="h-10 w-10" />
             </button>
         </div>
-        <div class="recipe__ingredients py-20 px-32 text-[1.6rem]">
-            <h2 class="text-accent uppercase text-center text-4xl font-bold mb-10">Recipe Ingredients</h2>
+        <div class="recipe__ingredients py-20 px-32 bg-mutedivory text-[1.6rem]">
+
+            <Heading2 content="Recipe Ingredients" />
             <ul class="recipe__ingredient-list grid grid-cols-2 gap-y-10 gap-x-12">
                 <li class="recipe__ingredient flex" v-for="(ingredient) in computedDosage">
                     <font-awesome-icon icon="fa-solid fa-check" class="recipe__icon h-8 w-8 text-accent mr-4" />
@@ -88,7 +91,13 @@ function increase() {
                 </li>
             </ul>
         </div>
-        <div class="recipe__directions"></div>
+        <div class="recipe__directions flex flex-col py-20 px-40 items-center">
+            <Heading2 content="How to cook it" />
+            <p class="recipe__directions-text text-[1.7rem] mb-14">
+                This recipe was carefully designed and tested by <span class="font-bold">{{store.recipe.publisher}}</span>. Please check out directions at their website.
+            </p>
+            <RoundedButton iconRight="fa-solid fa-arrow-right" content="Directions" :url="store.recipe.source_url" />
+        </div>
     </div>
     <div v-else> WOOPS</div>
 </template>
