@@ -37,6 +37,7 @@ function fetchRecipes() {
 }
 
 function fetchRecipe(id) {
+  store.loadingRecipe = true;
   store.recipe = {};
   // recipes.value = 'searched bread';
   axios
@@ -50,6 +51,7 @@ function fetchRecipe(id) {
       if (resp.status == 200) {
         store.recipe = resp.data.data.recipe;
       }
+      store.loadingRecipe = false;
     })
     .catch(function (error) {
       // handle error

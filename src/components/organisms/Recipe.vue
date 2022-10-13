@@ -3,6 +3,8 @@ import { ref, computed, reactive } from 'vue'
 import { useRecipes } from '../../stores/store.js'
 import RoundedButton from '../atoms/RoundedButton.vue'
 import Heading2 from '../atoms/Heading2.vue'
+import Spinner from "../atoms/Spinner.vue"
+
 
 const { store } = useRecipes();
 
@@ -38,7 +40,8 @@ function increase() {
 </script>
 
 <template>
-    <div v-if="Object.keys(store.recipe).length > 0 " class="recipe w-2/3 bg-ivory">
+    <Spinner class="w-2/3 bg-white" v-if="store.loadingRecipe" />
+    <div v-else-if="Object.keys(store.recipe).length > 0 " class="recipe w-2/3 bg-ivory">
         <figure
             class="recipe__fig h-[32rem] relative before:block before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-br before:from-gradient1 before:to-gradient2 before:opacity-60">
             <img class="recipe__img h-full w-full object-cover before:block before:w-full before:h-full"
