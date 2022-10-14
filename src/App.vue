@@ -2,15 +2,16 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from "./components/HelloWorld.vue";
-import {provide} from 'vue';
 import Header from "./components/organisms/Header.vue";
 import RecipeList from "./components/organisms/RecipeList.vue";
 import Recipe from "./components/organisms/Recipe.vue";
-import {useRecipes} from './stores/store.js'
+import {useRecipes} from './stores/store.js';
 
 const state = useRecipes();
 
-// provide('state', state);
+if(localStorage.getItem('bookmarks')) {
+  state.setBookmarks(localStorage.getItem('bookmarks'))  
+}
 
 </script>
 

@@ -5,8 +5,8 @@ import RoundedButton from '../atoms/RoundedButton.vue'
 import Heading2 from '../atoms/Heading2.vue'
 import Spinner from "../atoms/Spinner.vue"
 
-
-const { store } = useRecipes();
+const state = useRecipes();
+const { store } = state;
 
 const servingsOffset = ref(0);
 
@@ -73,7 +73,7 @@ function increase() {
             </div>
             <button
                 class="h-16 w-16 bg-gradient-to-br ml-auto from-gradient1 to-gradient2 rounded-full text-white flex items-center justify-center">
-                <font-awesome-icon @click="increase" icon="fa-regular fa-bookmark" class="h-10 w-10" />
+                <font-awesome-icon @click="state.toggleBookmark(store.recipe)" icon="fa-regular fa-bookmark" class="h-10 w-10" />
             </button>
         </div>
         <div class="recipe__ingredients py-20 px-32 bg-mutedivory text-[1.6rem]">

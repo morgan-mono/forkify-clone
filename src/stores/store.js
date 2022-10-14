@@ -5,6 +5,7 @@ const store = reactive({
   searchTerm: "",
   recipeID: "",
   recipes: [],
+  bookmarks: [],
   results: null,
   recipe: {},
   loadingRecipes: false,
@@ -47,7 +48,7 @@ function fetchRecipe(id) {
       },
     })
     .then((resp) => {
-      console.log(resp);
+      // console.log(resp);
       if (resp.status == 200) {
         store.recipe = resp.data.data.recipe;
       }
@@ -83,13 +84,25 @@ function fetchRecipeAPI(url, paramArgs) {
       return [];
     });
 }
+
+function bookmarkExists(id) {
+  //callback to be called in the some function
+  const exists = (element) => {
+    return element.id === id;
+  }
+  const doesIt = store.bookmarks.some(exists);
+  console.log(`checking if bookmark exists: ${doesIt}`);
+  return doesIt;
+}
+
 // WATCH FOR RECIPES SEARCH
 watch(
   () => store.searchTerm,
   (searchTerm, prevSearchTerm) => {
-    console.log(searchTerm, prevSearchTerm);
+    // console.log(searchTerm, prevSearchTerm);
     if (searchTerm !== prevSearchTerm) {
       console.log("Fetching recipes");
+      localStorage.setItem('searchTerm',searchTerm);
       fetchRecipes();
     }
   }
@@ -99,7 +112,7 @@ watch(
 watch(
   () => store.recipeID,
   (recipeID, prevRecipeID) => {
-    console.log(recipeID, prevRecipeID);
+    // console.log(recipeID, prevRecipeID);
     if (recipeID !== prevRecipeID) {
       console.log(`Fetching recipe ID ${recipeID}`);
       fetchRecipe(recipeID);
@@ -112,8 +125,26 @@ export function useRecipes() {
     store.searchTerm = value;
   };
   const updateRecipeID = (value) => {
-    store.recipeID = value;
+    store.recipeID = value;       
   };
 
-  return { store, updateSearchTerm, updateRecipeID };
+  const setBookmarks = (array) => {
+    store.bookmarks = array;
+  }
+
+  const toggleBookmark = (obj) => {
+    if (!bookmarkExists(obj.id)) {
+      store.bookmarks.push(obj);
+      console.log('bookmark added');
+      // console.log(store.bookmarks);
+    }
+    else {
+      console.log('bookmark exists, removing');
+      store.bookmarks = store.bookmarks.filter((bookmark) => {
+        return bookmark.id !== obj.id
+      })
+    }
+  }
+
+  return { store, updateSearchTerm, updateRecipeID, setBookmarks, toggleBookmark };
 }

@@ -1,7 +1,11 @@
 <script setup>
 import {ref, inject} from 'vue';
 import RoundedButton from '../atoms/RoundedButton.vue'
-const searchTerm = ref('');
+// const searchTerm = ref('');
+
+defineProps({
+    searchTerm: String,
+});
 
 </script>
 

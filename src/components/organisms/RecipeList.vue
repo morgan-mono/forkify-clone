@@ -42,12 +42,14 @@ function fetchRecipe(id) {
 
 <template>
     <Spinner class="w-1/3 bg-white" v-if="state.store.loadingRecipes" />
+    
     <div class="w-1/3 bg-white" v-else-if="state.store.results === 0">
         <div class="norecipes max-w-2xl mx-auto flex px-16 py-20">
             <font-awesome-icon icon="fa-solid fa-triangle-exclamation" class="recipe__icon h-12 w-12 text-accent mr-4" />
             <p class="text-3xl font-bold leading-relaxed">No recipes found for your query! Please try again ;)</p>
         </div>
     </div>
+
     <div v-else class="recipes w-1/3 bg-white py-12 flex flex-col">
         <!-- <div>{{paginatedResults}}</div> -->
         <ul class="recipes__list">
