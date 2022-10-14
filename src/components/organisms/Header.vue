@@ -20,7 +20,7 @@ function performSearch(n) {
     <header class="my-header h-40 px-4 sm:px-10 bg-ivory text-textdark flex justify-around items-center">
         <div class="logo mr-4 sm:mr-10 shrink-0">
             <img class="h-20 hidden sm:block" src="../../assets/logo.png" alt="">
-            <img class="h-20 sm:hidden" src="../../../public/favicon.png" alt="">
+            <img class="h-20 sm:hidden" src="/favicon.png" alt="">
         </div>
         <SearchBox :searchTerm="state.store.searchTerm" @search="performSearch" />
         <div class="nav ml-4 sm:ml-10 flex h-full">
