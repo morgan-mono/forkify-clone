@@ -17,16 +17,17 @@ function performSearch(n) {
 </script>
 
 <template>
-    <header class="my-header h-40 px-10 bg-ivory text-textdark flex justify-around items-center">
-        <div class="logo mr-10 shrink-0">
-            <img class="h-20" src="../../assets/logo.png" alt="">
+    <header class="my-header h-40 px-4 sm:px-10 bg-ivory text-textdark flex justify-around items-center">
+        <div class="logo mr-4 sm:mr-10 shrink-0">
+            <img class="h-20 hidden sm:block" src="../../assets/logo.png" alt="">
+            <img class="h-20 sm:hidden" src="../../../public/favicon.png" alt="">
         </div>
         <SearchBox :searchTerm="state.store.searchTerm" @search="performSearch" />
-        <div class="nav mx-10 flex h-full">
+        <div class="nav ml-4 sm:ml-10 flex h-full">
             <NavButton icon="fa-regular fa-pen-to-square" label="add recipe" />
             <NavButton icon="fa-regular fa-bookmark" class="peer" label="bookmarks" />
             <div
-                class="nav-bookmarks w-[40rem] bg-white absolute z-10 top-40 right-0 invisible opacity-0 hover:visible hover:opacity-100 peer-hover:visible peer-hover:opacity-100 transition-all duration-500 delay-200 py-4">
+                class="nav-bookmarks w-[40rem] bg-white absolute z-10 top-40 right-0 invisible opacity-0 hover:visible hover:opacity-100 peer-hover:visible peer-hover:opacity-100 peer-focus:visible peer-focus:opacity-100 transition-all duration-500 delay-200 py-4">
                 <ul class="bookmarks">
                     <li v-if="state.store.bookmarks.length == 0" class="bookmarks__error max-w-[40rem] flex py-20 px-16">
                         <font-awesome-icon icon="fa-solid fa-triangle-exclamation"
