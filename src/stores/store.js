@@ -102,7 +102,7 @@ watch(
     // console.log(searchTerm, prevSearchTerm);
     if (searchTerm !== prevSearchTerm) {
       console.log("Fetching recipes");
-      localStorage.setItem('searchTerm',searchTerm);
+      // localStorage.setItem('searchTerm',searchTerm);
       fetchRecipes();
     }
   }
@@ -128,21 +128,23 @@ export function useRecipes() {
     store.recipeID = value;       
   };
 
-  const setBookmarks = (array) => {
-    store.bookmarks = array;
+  const setBookmarks = (json) => {
+    store.bookmarks = JSON.parse(json);
   }
 
   const toggleBookmark = (obj) => {
     if (!bookmarkExists(obj.id)) {
       store.bookmarks.push(obj);
+      localStorage.setItem('bookmarks',JSON.stringify(store.bookmarks));
       console.log('bookmark added');
-      // console.log(store.bookmarks);
+      console.log(store.bookmarks);
     }
     else {
       console.log('bookmark exists, removing');
       store.bookmarks = store.bookmarks.filter((bookmark) => {
         return bookmark.id !== obj.id
       })
+      localStorage.setItem('bookmarks',JSON.stringify(store.bookmarks));
     }
   }
 
