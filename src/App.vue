@@ -23,7 +23,6 @@ if(localStorage.getItem('bookmarks')) {
       <Recipe />
     </main>
   </div>
-  <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
 <style scoped>
