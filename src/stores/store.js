@@ -6,11 +6,13 @@ const store = reactive({
   recipeID: "",
   recipes: [],
   bookmarks: [],
+  sidebarVisible:false,
   results: null,
   recipe: {},
   loadingRecipes: false,
   loadingRecipe: false,
 });
+
 
 function fetchRecipeAPI(type, param) {
   let url = "https://forkify-api.herokuapp.com/api/v2/recipes/";
@@ -72,6 +74,7 @@ watch(
     if (searchTerm !== prevSearchTerm) {
       console.log("Fetching recipes");
       // fetchRecipes();
+      store.sidebarVisible = true;
       fetchRecipeAPI('recipes', searchTerm);
     }
   }
@@ -85,6 +88,8 @@ watch(
     if (recipeID !== prevRecipeID) {
       console.log(`Fetching recipe ID ${recipeID}`);
       // fetchRecipe(recipeID);
+      store.sidebarVisible = false;
+      window.scrollTo(0,0);
       fetchRecipeAPI('recipe', recipeID);
 
     }
@@ -118,11 +123,16 @@ export function useRecipes() {
     }
   };
 
+  const toggleSidebar = (value) => {
+    store.sidebarVisible = value;
+  }
+
   return {
     store,
     updateSearchTerm,
     updateRecipeID,
     setBookmarks,
     toggleBookmark,
+    toggleSidebar,
   };
 }
