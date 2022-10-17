@@ -9,7 +9,7 @@ import {useRecipes} from './stores/store.js';
 
 const state = useRecipes();
 
-// const sidebarVisible = ref(false);
+// const sidebarVisible = ref(false); TEST!
 
 if(localStorage.getItem('bookmarks')) {
   state.setBookmarks(localStorage.getItem('bookmarks'))  
