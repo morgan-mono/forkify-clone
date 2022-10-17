@@ -40,7 +40,7 @@ function increase() {
 </script>
 
 <template>
-    <Spinner class="w-2/3 bg-white" v-if="store.loadingRecipe" />
+    <Spinner class="w-2/3 bg-white justify-center items-start" v-if="store.loadingRecipe" />
     <div v-else-if="Object.keys(store.recipe).length > 0 " class="recipe w-2/3 bg-ivory">
         <figure
             class="recipe__fig h-[32rem] relative before:block before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-to-br before:from-gradient1 before:to-gradient2 before:opacity-60">

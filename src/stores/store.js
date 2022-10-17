@@ -51,6 +51,7 @@ function fetchRecipeAPI(type, param) {
     }
   };
   sendGetRequest();
+  
 }
 
 function bookmarkExists(id) {

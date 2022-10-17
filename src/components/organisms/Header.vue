@@ -7,12 +7,17 @@ import { useRecipes } from '../../stores/store.js'
 
 const state = useRecipes();
 
+const bookmarksVisible = ref(false);
 
+function toggleBookmarks(value) {
+    bookmarksVisible.value = value
+}
 
 function performSearch(n) {
     // console.log('search term:', n);
     state.updateSearchTerm(n);
 }
+
 
 </script>
 
@@ -25,9 +30,15 @@ function performSearch(n) {
         <SearchBox :searchTerm="state.store.searchTerm" @search="performSearch" />
         <div class="nav ml-4 sm:ml-10 flex h-full">
             <NavButton icon="fa-regular fa-pen-to-square" label="add recipe" />
-            <NavButton icon="fa-regular fa-bookmark" class="peer" label="bookmarks" />
+            <NavButton 
+            @mouseenter="toggleBookmarks(true)"
+            @mouseleave="toggleBookmarks(false)"
+            @click="toggleBookmarks(!bookmarksVisible)"
+            icon="fa-regular fa-bookmark"
+            label="bookmarks" />
             <div
-                class="nav-bookmarks w-[40rem] bg-white absolute z-10 top-40 right-0 invisible opacity-0 hover:visible hover:opacity-100 peer-hover:visible peer-hover:opacity-100 peer-focus:visible peer-focus:opacity-100 transition-all duration-500 delay-200 py-4">
+                :class="bookmarksVisible ? 'visible opacity-100' : 'invisible opacity-0'"
+                class="nav-bookmarks w-[40rem] bg-white absolute z-10 top-40 right-0 transition-all duration-500 delay-200 py-4">
                 <ul class="bookmarks">
                     <li v-if="state.store.bookmarks.length == 0" class="bookmarks__error max-w-[40rem] flex py-20 px-16">
                         <font-awesome-icon icon="fa-solid fa-triangle-exclamation"
